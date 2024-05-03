@@ -1,17 +1,10 @@
 import withSerwistInit from "@serwist/next";
 
-const withSerwist = withSerwistInit({
-  cacheOnNavigation: true,
-  swSrc: "src/sw.ts", // add the path where you create sw.ts
-  swDest: "public/sw.js",
-  reloadOnOnline: true,
-  disable: process.env.NODE_ENV === "development", // to disable pwa in development
-});
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/big-bang-radio",
   output: "export",
+  reactStrictMode: true,
+  basePath: "/big-bang-radio",
   crossOrigin: "anonymous",
   images: { unoptimized: true },
   webpack(config) {
@@ -42,5 +35,14 @@ const nextConfig = {
     return config;
   },
 };
+
+const withSerwist = withSerwistInit({
+  cacheOnNavigation: true,
+  swSrc: "src/sw.ts", // add the path where you create sw.ts
+  swDest: "public/sw.js",
+  reloadOnOnline: true,
+  disable: process.env.NODE_ENV === "development", // to disable pwa in development
+  maximumFileSizeToCacheInBytes: 17 * 1024 * 1024,
+});
 
 export default withSerwist(nextConfig);
