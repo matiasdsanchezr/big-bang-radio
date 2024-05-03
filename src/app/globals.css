@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-color: #fff;
+  --foreground-rgb: 255, 255, 255;
+  --background-color: #222;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --primary-color: #ff3500;
+  font-size: 16px;
+}
+/* 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --font-color: 255, 255, 255;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+} */
+
+@layer base {
+  html {
+    @apply text-white;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  min-width: 320px;
+}
+
+html {
+  scrollbar-width: thin;
+  /* scrollbar-color: var(--primary-color) black; */
+  /* scrollbar-gutter: stable; */
+  color: var(--font-color);
+}
+
+body {
+  color: rgb(var(----font-color));
+  background-color: var(--background-color);
+  /* grid-template-areas: "header" "main" "footer"; */
+  grid-template-rows: 1fr auto;
+  position: relative;
+}
+
+h1,
+h2 {
+  font-size: 1.96rem;
+}
+
+@media screen and (max-width: 768px) {
+  h1,
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
